@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Recipes</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    .hero {
+      background: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .dish-title {
+      cursor: pointer;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+    }
+
+    #AboutUs {
+
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    /* Heading styling */
+    h2 {
+      text-align: center;
+      color: #333;
+      font-size: 24px;
+    }
+
+    /* Form styling */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-3">
+    <a class="navbar-brand fs-3 fw-bold" href="#">Foodie.<span style="color: gold;">.</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navLinks">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#Available">Avialable Recipes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Popular">Popular</a></li>
+        <li class="nav-item"><a class="nav-link" href="#AboutUs">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+      </ul>
+      <form class="d-flex" role="search" onsubmit="search(event)">
+        <input class="form-control me-2" type="search" id="searchInput" placeholder="Search recipes..." />
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay">
+      <h1 class="display-5 fw-bold">Welcome to Foodie.</h1>
+      <button class="btn btn-warning mt-3">Order Now</button>
+    </div>
+  </section>
+
+  <!-- Popular Dishes -->
+  <section class="container py-5">
+    <h2 class="mb-4">Popular Dishes &#128523;</h2>
+    <div class="row g-4">
+      <!-- Dish 1 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img
+            src="https://img.freepik.com/free-photo/grilled-chicken-fillet-fresh-vegetable-salad-tomatoes-red-onion-arugula-chicken-meat-salad-healthy-food_2829-6940.jpg"
+            class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title dish-title" data-bs-toggle="modal" data-bs-target="#modal1">Grilled Chicken with
+              Veggies</h5>
+            <p class="card-text">Flavorful grilled chicken with vegetables and herbs.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Dish 2 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="https://img.freepik.com/free-photo/plate-fettuccine-alfredo-with-fresh-parsley_9975-124881.jpg"
+            class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title dish-title" data-bs-toggle="modal" data-bs-target="#modal2">Creamy Garlic Pasta</h5>
+            <p class="card-text">Pasta with garlic sauce, parmesan, and lemon zest.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Dish 3 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="https://img.freepik.com/free-photo/front-view-delicious-cake-with-lily_23-2148761723.jpg"
+            class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title dish-title" data-bs-toggle="modal" data-bs-target="#modal3">Classic Chocolate Cake
+            </h5>
+            <p class="card-text">Moist chocolate cake with ganache and berries.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container py-5 avai" id="Available">
+    <h2 class="mb-4">Available Recipes</h2>
+    <div style="overflow-x: auto; white-space: nowrap;" class="pb-3">
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img src="https://img.freepik.com/free-photo/chicken-skewers-with-slices-sweet-peppers-dill_2829-18813.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Tandoori Chicken">
+        <p class="mt-2"><b>Tandoori Chicken</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 180px;">
+        <img src="https://img.freepik.com/free-photo/delicious-thai-food-still-life_23-2149508917.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Mango Smoothie Bowl">
+        <p class="mt-2"><b>Mango Smoothie Bowl</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img
+          src="https://img.freepik.com/free-photo/vertical-shot-traditional-indian-paneer-butter-masala-cheese-cottage-curry-black-surface_181624-32001.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Paneer Butter Masala">
+        <p class="mt-2"><b>Paneer Butter Masala</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img
+          src="https://img.freepik.com/free-photo/high-angle-avocado-toast-with-poached-egg-cup-coffee_23-2148417428.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Avocado Toast with Egg">
+        <p class="mt-2"><b>Avocado Toast with Egg</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img src="https://img.freepik.com/free-photo/green-curry-bowl-spices-wooden-table_1150-21366.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Thai Green Curry">
+        <p class="mt-2"><b>Thai Green Curry</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img src="https://img.freepik.com/free-photo/close-up-appetizing-ramadan-meal_23-2151182540.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Biryani with Raita">
+        <p class="mt-2"><b>Biryani with Raita</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img
+          src="https://img.freepik.com/premium-photo/composition-with-delicious-shrimps-wooden-background-close-up_185193-11502.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Lemon Garlic Shrimp">
+        <p class="mt-2"><b>Lemon Garlic Shrimp</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img src="https://img.freepik.com/free-photo/top-view-delicious-autumn-soup-composition_23-2148634470.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="French Onion Soup">
+        <p class="mt-2"><b>French Onion Soup</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img src="https://img.freepik.com/free-photo/chicken-caesar-salad-plate_140725-2358.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Caesar Salad">
+        <p class="mt-2"><b>Caesar Salad</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img
+          src="https://img.freepik.com/free-photo/slice-cheesecake-with-cherry-topping-sprig-mint-white-plate_9975-124527.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Berry Cheesecake">
+        <p class="mt-2"><b>Berry Cheesecake</b></p>
+      </div>
+    </div>
+  </section>
+  <section class="container py-6" id="Popular">
+    <h2 class="mb-4">Popular</h2>
+    <div style="overflow-x: auto; white-space: nowrap;" class="pb-3">
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img
+          src="https://img.freepik.com/free-photo/top-view-delicious-pizza-with-fresh-cheese_23-2150096953.jpg?ga=GA1.1.995548139.1750051852&semt=ais_hybrid&w=740"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Margherita Pizza">
+        <p class="mt-2"><b>Margherita Pizza</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 180px;">
+        <img
+          src="https://img.freepik.com/free-photo/traditional-fresh-japanese-sushi-rolls_2829-9704.jpg?ga=GA1.1.995548139.1750051852&semt=ais_hybrid&w=740"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Sushi Rolls">
+        <p class="mt-2"><b>Sushi Rolls</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img
+          src="https://img.freepik.com/free-photo/fried-pork-with-dried-chili-salt-dark-background_1150-45512.jpg?ga=GA1.1.995548139.1750051852&semt=ais_hybrid&w=740"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Paneer Butter Masala">
+        <p class="mt-2"><b>Chicken Fried Rice</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img
+          src="https://img.freepik.com/free-photo/top-view-apple-pie-thanksgiving-with-cutlery-leaves_23-2148638999.jpg?ga=GA1.1.995548139.1750051852&semt=ais_hybrid&w=740"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Apple Pie">
+        <p class="mt-2"><b>Apple Pie</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img src="https://img.freepik.com/free-photo/top-view-delicious-autumn-soup-composition_23-2148634470.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="French Onion Soup">
+        <p class="mt-2"><b>French Onion Soup</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img src="https://img.freepik.com/free-photo/chicken-caesar-salad-plate_140725-2358.jpg"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Caesar Salad">
+        <p class="mt-2"><b>Caesar Salad</b></p>
+      </div>
+      <div class="d-inline-block me-3 text-center" style="width: 160px;">
+        <img
+          src="https://img.freepik.com/free-photo/high-angle-delicious-indian-dessert_23-2149312428.jpg?ga=GA1.1.995548139.1750051852&semt=ais_hybrid&w=740"
+          class="img-fluid rounded" style="height: 150px; object-fit: cover;" alt="Gulab Jamun">
+        <p class="mt-2"><b>Gulab Jamun</b></p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Modals for Popular Dishes -->
+  <div class="modal fade" id="modal1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Grilled Chicken</h5><button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Ingredients:</strong> Chicken, veggies, olive oil, herbs</p>
+          <p><strong>Instructions:</strong> Marinate and grill chicken, serve with sautéed vegetables.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Creamy Garlic Pasta</h5><button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Ingredients:</strong> Pasta, cream, garlic, parmesan</p>
+          <p><strong>Instructions:</strong> Cook pasta, stir in sauce, and garnish with cheese.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal3" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Chocolate Cake</h5><button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Ingredients:</strong> Flour, cocoa, eggs, ganache</p>
+          <p><strong>Instructions:</strong> Bake at 180°C, top with ganache and berries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="AboutUs">
+    <div>
+      <h2>About Us</h2>
+      <p>
+        Welcome to Foodie.. <br>— your ultimate destination for delicious, easy-to-follow recipes from around the
+        world!<br>
+
+        We believe that great food brings people together.<br> Whether you're a beginner looking to make your first dish
+        or an experienced cook exploring new cuisines, our carefully curated recipes are here to inspire your culinary
+        journey.
+      </p>
+    </div>
+  </div>
+
+  <section id="contact" class="bg-light">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form action="submit_form.php" method="POST">
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <input type="email" id="email" name="email" placeholder="Your Email" required />
+        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    function search(event) {
+      event.preventDefault();
+      const query = document.getElementById('searchInput').value.trim();
+      if (query) alert("Searching for: " + query);
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
