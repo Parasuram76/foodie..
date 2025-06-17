@@ -51,7 +51,7 @@
     }
 
     .container {
-      max-width: 600px;
+      max-width: 1000px;
       margin: 50px auto;
       padding: 20px;
       background: #ffffff;
@@ -101,6 +101,10 @@
       background-color: #0056b3;
     }
 
+    .img-fluid{
+      width: 170px;
+    }
+
     /* Responsive design */
     @media (max-width: 768px) {
       .container {
@@ -120,10 +124,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navLinks">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#Available">Avialable Recipes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Available">Available Recipes</a></li>
         <li class="nav-item"><a class="nav-link" href="#Popular">Popular</a></li>
         <li class="nav-item"><a class="nav-link" href="#AboutUs">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
       </ul>
       <form class="d-flex" role="search" onsubmit="search(event)">
         <input class="form-control me-2" type="search" id="searchInput" placeholder="Search recipes..." />
@@ -331,21 +335,20 @@
     </div>
   </div>
   <div id="AboutUs">
-    <div>
+    <div style="text-align: center;">
       <h2>About Us</h2>
       <p>
-        Welcome to Foodie.. <br>— your ultimate destination for delicious, easy-to-follow recipes from around the
+        Welcome to Foodie your ultimate destination for delicious, easy-to-follow recipes from around the
         world!<br>
 
-        We believe that great food brings people together.<br> Whether you're a beginner looking to make your first dish
-        or an experienced cook exploring new cuisines, our carefully curated recipes are here to inspire your culinary
+        We believe that great food brings people together.<br>
         journey.
       </p>
     </div>
   </div>
 
   <section id="contact" class="bg-light">
-    <div class="container">
+    <div class="container" style="width: 417px;">
       <h2>Contact Us</h2>
       <form action="submit_form.php" method="POST">
         <input type="text" id="name" name="name" placeholder="Your Name" required />
